@@ -10,7 +10,14 @@ const inputBar = document.querySelector(".inputBar")
  * if the word matches: show green colour in input and word screen.
 */
 /**A function that starts after enter button is clicked
+ * if the word is correct, display the next word
+ * if the word is incorrect, keep the same word. 
  */
+/**A function that sets a timer. When it reaches 0, end the game
+ * display ending screen with a sentence.
+ * "Game Over: You have typed X words in x minutes. Well done!
+ */
+/**A reset button to restart the game. */
 onRandomWordButtonClick = () => {
 
 }
