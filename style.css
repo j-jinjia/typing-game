@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: grey;
+  height: 100vh;
+}
+.container .introduction {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.container .introduction .introduction__header {
+  justify-self: center;
+}
+.container .buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.container .buttons .buttons__paragraph {
+  padding: 1rem;
+  margin: 1rem;
+}
+.container .buttons .buttons__random {
+  padding: 1rem;
+  margin: 1rem;
+}
