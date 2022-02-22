@@ -1,17 +1,35 @@
 "use strict";
 
 //global variables
-//DOM elements
-var paragraphMode = document.querySelector(".gameMode1");
-var randomWordsMode = document.querySelector(".gameMode2");
-var inputBar = document.querySelector(".inputBar"); //functions
+var time = 60;
+var score = 0; //DOM elements
 
+var paragraphMode = document.querySelector(".buttons__paragraph");
+var randomWordsMode = document.querySelector(".buttons__random");
+var inputBar = document.querySelector(".inputBar");
+var introSection = document.querySelector(".introdcution");
+var instructionsSection = document.querySelector(".instructions");
+var timerDisplay = document.querySelector(".scoreBoard__timer");
+var scoreDisplay = document.querySelector(".scoreBoard__score");
 /**A function that clears the introduction header, the instructions and the buttons when either button is clicked and displays the screen and input bigger. Also add a countdown before the game starts, score and timer. */
 
+onButtonParagraphClick = function onButtonParagraphClick(event) {
+  introSection.innerText = "";
+  instructionsSection.innerText = "";
+}; //RANDOM WORD GAME
+
+
+onButtonRandomClick = function onButtonRandomClick(event) {
+  introSection.innerText = "";
+  instructionsSection.innerText = "";
+  timerDisplay.innerText += " ".concat(time);
+  scoreDisplay.innerText += " ".concat(score);
+  setInterval(countDownTimer, 1000);
+};
 /**A function that checks whether the input text matches the word displayed.
  * if the word doesn't match : show red colour in input and word screen.
  * if the word matches: show green colour in input and word screen.
-*/
+ */
 
 /**A function that starts after enter button is clicked
  * if the word is correct, display the next word
@@ -23,12 +41,21 @@ var inputBar = document.querySelector(".inputBar"); //functions
  * "Game Over: You have typed X words in x minutes. Well done!
  */
 
+
+var countDownTimer = function countDownTimer() {
+  console.log("hello1");
+
+  if (time > 0) {
+    time--;
+  } else if (time === 0) {
+    timerDisplay.innerText = "Time is up!";
+  }
+
+  timerDisplay.innerText = "Timer: ".concat(time);
+};
 /**A reset button to restart the game. */
-
-onRandomWordButtonClick = function onRandomWordButtonClick() {};
-
-onParagraphButtonClick = function onParagraphButtonClick() {}; //Event listeners
+//Event listeners
 
 
-paragraphMode.addEventListener("click", onParagraphButtonClick);
-randomWordsMode.addEventListener("click", onRandomWordButtonClick);
+paragraphMode.addEventListener("click", onButtonParagraphClick);
+randomWordsMode.addEventListener("click", onButtonRandomClick);
