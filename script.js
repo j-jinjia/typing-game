@@ -1,43 +1,79 @@
 import {words} from "./words.js"
 
 //global variables
-let time = 60;
+let time = 10;
 let score = 0;
+let gameActivity;
 //DOM elements
 const paragraphMode = document.querySelector(".buttons__paragraph");
 const randomWordsMode = document.querySelector(".buttons__random");
-const inputBar = document.querySelector(".inputBar")
-const introSection = document.querySelector(".introdcution")
-const instructionsSection = document.querySelector(".instructions")
+const inputBar = document.querySelector(".inputBar");
+const introSection = document.querySelector(".introdcution");
+const instructionsSection = document.querySelector(".instructions");
+const wordDisplay = document.querySelector(".gameSettings__screenDisplay");
 const timerDisplay = document.querySelector(".scoreBoard__timer");
-const scoreDisplay = document.querySelector(".scoreBoard__score")
-const wordDisplay = document.querySelector(".gameSettings__screenDisplay")
+const scoreDisplay = document.querySelector(".scoreBoard__score");
+const messageDisplay = document.querySelector(".scoreBoard__message");
 
 /**A function that clears the introduction header, the instructions and the buttons when either button is clicked and displays the screen and input bigger. Also add a countdown before the game starts, score and timer. */
 //** A function to display a random word from the array of words. */
+const startGame = () => {
+    if (wordMatch()) {
+        isPlaying = true;
+        pickWord(words);
+        inputBar.value = "";
+        score++;
+    }
+};
+const wordMatch = () => {
+    // Check if the typed word is matching the displayed word. Turn the typed words into lowercase.
+    if (inputBar.value === wordDisplay.innerText) {
+        messageDisplay.innerText = "Correct!!!";
+        return true;
+    }else {
+        messageDisplay.innerText = "";
+        return false;
+    }
+    
+};
 const pickWord = (word) => {
     const randomWord = Math.floor(Math.random() * word.length);
     wordDisplay.innerText = word[randomWord];
 };
-const onButtonParagraphClick = (event) => {
-   introSection.innerText="";
-   instructionsSection.innerText="";
-}
+const countDownTimer = () => {
+    if (time > 0){
+        time--;
+    }else if (time === 0){
+        gameActivity = false
+    }
+    timerDisplay.innerText = `Timer: ${time}`
+};
+const gameStatus = () =>{
+    if (!gameActivity && time === 0){
+        messageDisplay.innerText ="Time is up!"
+        score = -1
+    }
+};
 
+const onButtonParagraphClick = (event) => {
+    introSection.innerText="";
+    instructionsSection.innerText="";
+};
 //RANDOM WORD GAME
 const onButtonRandomClick = (event) => {
     introSection.innerText="";
     instructionsSection.innerText="";
-    timerDisplay.innerText+= ` ${time}`;
-    scoreDisplay.innerText+= ` ${score}`
-    setInterval(countDownTimer,1000);
     pickWord(words);
+    inputBar.addEventListener("input", startGame);
+    setInterval(countDownTimer,1000);
+    setInterval(gameStatus,50);
+};
 
-}
 /**A function that checks whether the input text matches the word displayed.
  * if the word doesn't match : show red colour in input and word screen.
  * if the word matches: show green colour in input and word screen.
  */
+
 /**A function that starts after enter button is clicked
  * if the word is correct, display the next word
  * if the word is incorrect, keep the same word. 
@@ -46,19 +82,10 @@ const onButtonRandomClick = (event) => {
  * display ending screen with a sentence.
  * "Game Over: You have typed X words in x minutes. Well done!
  */
-const countDownTimer = () => {
-    console.log("hello1")
-    if (time > 0){
-        time--;
-    }else if (time === 0){
-        timerDisplay.innerText ="Time is up!";
-    }
-    timerDisplay.innerText = `Timer: ${time}`
-}
 
 
 /**A reset button to restart the game. */
 //Event listeners
 paragraphMode.addEventListener("click", onButtonParagraphClick);
-randomWordsMode.addEventListener("click", onButtonRandomClick );
+randomWordsMode.addEventListener("click", onButtonRandomClick);
 

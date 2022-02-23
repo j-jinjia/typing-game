@@ -2,23 +2,62 @@
 
 var _words = require("./words.js");
 
-var time = 60;
-var score = 0; //DOM elements
+var time = 10;
+var score = 0;
+var gameActivity; //DOM elements
 
 var paragraphMode = document.querySelector(".buttons__paragraph");
 var randomWordsMode = document.querySelector(".buttons__random");
 var inputBar = document.querySelector(".inputBar");
 var introSection = document.querySelector(".introdcution");
 var instructionsSection = document.querySelector(".instructions");
+var wordDisplay = document.querySelector(".gameSettings__screenDisplay");
 var timerDisplay = document.querySelector(".scoreBoard__timer");
 var scoreDisplay = document.querySelector(".scoreBoard__score");
-var wordDisplay = document.querySelector(".gameSettings__screenDisplay");
+var messageDisplay = document.querySelector(".scoreBoard__message");
 /**A function that clears the introduction header, the instructions and the buttons when either button is clicked and displays the screen and input bigger. Also add a countdown before the game starts, score and timer. */
 //** A function to display a random word from the array of words. */
+
+var startGame = function startGame() {
+  if (wordMatch()) {
+    isPlaying = true;
+    pickWord(_words.words);
+    inputBar.value = "";
+    score++;
+  }
+};
+
+var wordMatch = function wordMatch() {
+  // Check if the typed word is matching the displayed word. Turn the typed words into lowercase.
+  if (inputBar.value === wordDisplay.innerText) {
+    messageDisplay.innerText = "Correct!!!";
+    return true;
+  } else {
+    messageDisplay.innerText = "";
+    return false;
+  }
+};
 
 var pickWord = function pickWord(word) {
   var randomWord = Math.floor(Math.random() * word.length);
   wordDisplay.innerText = word[randomWord];
+};
+
+var countDownTimer = function countDownTimer() {
+  if (time > 0) {
+    time--;
+  } else if (time === 0) {
+    gameActivity = false;
+  }
+
+  timerDisplay.innerText = "Timer: ".concat(time);
+};
+
+var gameStatus = function gameStatus() {
+  if (!gameActivity && time === 0) {
+    messageDisplay.innerText = "Time is up!";
+    score = -1;
+  }
 };
 
 var onButtonParagraphClick = function onButtonParagraphClick(event) {
@@ -30,10 +69,10 @@ var onButtonParagraphClick = function onButtonParagraphClick(event) {
 var onButtonRandomClick = function onButtonRandomClick(event) {
   introSection.innerText = "";
   instructionsSection.innerText = "";
-  timerDisplay.innerText += " ".concat(time);
-  scoreDisplay.innerText += " ".concat(score);
-  setInterval(countDownTimer, 1000);
   pickWord(_words.words);
+  inputBar.addEventListener("input", startGame);
+  setInterval(countDownTimer, 1000);
+  setInterval(gameStatus, 50);
 };
 /**A function that checks whether the input text matches the word displayed.
  * if the word doesn't match : show red colour in input and word screen.
@@ -50,18 +89,6 @@ var onButtonRandomClick = function onButtonRandomClick(event) {
  * "Game Over: You have typed X words in x minutes. Well done!
  */
 
-
-var countDownTimer = function countDownTimer() {
-  console.log("hello1");
-
-  if (time > 0) {
-    time--;
-  } else if (time === 0) {
-    timerDisplay.innerText = "Time is up!";
-  }
-
-  timerDisplay.innerText = "Timer: ".concat(time);
-};
 /**A reset button to restart the game. */
 //Event listeners
 
