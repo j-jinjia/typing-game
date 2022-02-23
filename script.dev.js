@@ -2,7 +2,7 @@
 
 var _words = require("./words.js");
 
-var time = 10;
+var time = 4;
 var score = 0;
 var gameActivity; //DOM elements
 
@@ -18,24 +18,14 @@ var messageDisplay = document.querySelector(".scoreBoard__message");
 /**A function that clears the introduction header, the instructions and the buttons when either button is clicked and displays the screen and input bigger. Also add a countdown before the game starts, score and timer. */
 //** A function to display a random word from the array of words. */
 
-var startGame = function startGame() {
-  if (wordMatch()) {
-    isPlaying = true;
-    pickWord(_words.words);
-    inputBar.value = "";
-    score++;
+var countDownTimer = function countDownTimer() {
+  if (time > 0) {
+    time--;
+  } else if (time == 0) {
+    gameActivity = false;
   }
-};
 
-var wordMatch = function wordMatch() {
-  // Check if the typed word is matching the displayed word. Turn the typed words into lowercase.
-  if (inputBar.value === wordDisplay.innerText) {
-    messageDisplay.innerText = "Correct!!!";
-    return true;
-  } else {
-    messageDisplay.innerText = "";
-    return false;
-  }
+  timerDisplay.innerText = "Timer: ".concat(time);
 };
 
 var pickWord = function pickWord(word) {
@@ -43,14 +33,15 @@ var pickWord = function pickWord(word) {
   wordDisplay.innerText = word[randomWord];
 };
 
-var countDownTimer = function countDownTimer() {
-  if (time > 0) {
-    time--;
-  } else if (time === 0) {
-    gameActivity = false;
+var wordMatch = function wordMatch() {
+  // Check if the typed word is matching the displayed word. Turn the typed words into lowercase.
+  if (inputBar.value === wordDisplay.innerText) {
+    messageDisplay.innerText = 'Correct!!!';
+    return true;
+  } else {
+    messageDisplay.innerText = '';
+    return false;
   }
-
-  timerDisplay.innerText = "Timer: ".concat(time);
 };
 
 var gameStatus = function gameStatus() {
@@ -59,6 +50,15 @@ var gameStatus = function gameStatus() {
     score = -1;
   }
 };
+
+function startGame() {
+  if (wordMatch()) {
+    isPlaying = true;
+    pickWord(_words.words);
+    inputBar.value = '';
+    score++;
+  }
+}
 
 var onButtonParagraphClick = function onButtonParagraphClick(event) {
   introSection.innerText = "";
@@ -70,9 +70,9 @@ var onButtonRandomClick = function onButtonRandomClick(event) {
   introSection.innerText = "";
   instructionsSection.innerText = "";
   pickWord(_words.words);
-  inputBar.addEventListener("input", startGame);
   setInterval(countDownTimer, 1000);
   setInterval(gameStatus, 50);
+  inputBar.addEventListener("input", startGame);
 };
 /**A function that checks whether the input text matches the word displayed.
  * if the word doesn't match : show red colour in input and word screen.

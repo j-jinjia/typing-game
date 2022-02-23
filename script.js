@@ -1,7 +1,7 @@
 import {words} from "./words.js"
 
 //global variables
-let time = 10;
+let time = 4;
 let score = 0;
 let gameActivity;
 //DOM elements
@@ -17,58 +17,60 @@ const messageDisplay = document.querySelector(".scoreBoard__message");
 
 /**A function that clears the introduction header, the instructions and the buttons when either button is clicked and displays the screen and input bigger. Also add a countdown before the game starts, score and timer. */
 //** A function to display a random word from the array of words. */
-const startGame = () => {
-    if (wordMatch()) {
-        isPlaying = true;
-        pickWord(words);
-        inputBar.value = "";
-        score++;
+const countDownTimer = () => {
+    if (time > 0){
+        time--;
+    }else if (time == 0){
+        gameActivity = false
     }
-};
-const wordMatch = () => {
-    // Check if the typed word is matching the displayed word. Turn the typed words into lowercase.
-    if (inputBar.value === wordDisplay.innerText) {
-        messageDisplay.innerText = "Correct!!!";
-        return true;
-    }else {
-        messageDisplay.innerText = "";
-        return false;
-    }
-    
-};
+    timerDisplay.innerText = `Timer: ${time}`
+}
 const pickWord = (word) => {
     const randomWord = Math.floor(Math.random() * word.length);
     wordDisplay.innerText = word[randomWord];
 };
-const countDownTimer = () => {
-    if (time > 0){
-        time--;
-    }else if (time === 0){
-        gameActivity = false
-    }
-    timerDisplay.innerText = `Timer: ${time}`
+const wordMatch = () => {
+    // Check if the typed word is matching the displayed word. Turn the typed words into lowercase.
+    if (inputBar.value === wordDisplay.innerText) {
+        messageDisplay.innerText = 'Correct!!!';
+        return true;
+      } else {
+        messageDisplay.innerText = '';
+        return false;
+      }
+    
 };
 const gameStatus = () =>{
     if (!gameActivity && time === 0){
         messageDisplay.innerText ="Time is up!"
         score = -1
     }
-};
-
+}
+function startGame() {
+    if (wordMatch()) {
+      isPlaying = true;
+      pickWord(words);
+      inputBar.value = '';
+      score++;
+    }
+}
 const onButtonParagraphClick = (event) => {
-    introSection.innerText="";
-    instructionsSection.innerText="";
-};
+   introSection.innerText="";
+   instructionsSection.innerText="";
+}
+
 //RANDOM WORD GAME
 const onButtonRandomClick = (event) => {
     introSection.innerText="";
     instructionsSection.innerText="";
     pickWord(words);
-    inputBar.addEventListener("input", startGame);
     setInterval(countDownTimer,1000);
     setInterval(gameStatus,50);
-};
+    inputBar.addEventListener("input", startGame)
 
+
+
+}
 /**A function that checks whether the input text matches the word displayed.
  * if the word doesn't match : show red colour in input and word screen.
  * if the word matches: show green colour in input and word screen.
