@@ -1,3 +1,5 @@
+import {words} from "./words.js"
+
 //global variables
 let time = 60;
 let score = 0;
@@ -9,22 +11,29 @@ const introSection = document.querySelector(".introdcution")
 const instructionsSection = document.querySelector(".instructions")
 const timerDisplay = document.querySelector(".scoreBoard__timer");
 const scoreDisplay = document.querySelector(".scoreBoard__score")
+const wordDisplay = document.querySelector(".gameSettings__screenDisplay")
+
 /**A function that clears the introduction header, the instructions and the buttons when either button is clicked and displays the screen and input bigger. Also add a countdown before the game starts, score and timer. */
-onButtonParagraphClick = (event) => {
+//** A function to display a random word from the array of words. */
+const pickWord = (word) => {
+    const randomWord = Math.floor(Math.random() * word.length);
+    wordDisplay.innerText = word[randomWord];
+};
+const onButtonParagraphClick = (event) => {
    introSection.innerText="";
    instructionsSection.innerText="";
 }
 
 //RANDOM WORD GAME
-onButtonRandomClick = (event) => {
+const onButtonRandomClick = (event) => {
     introSection.innerText="";
     instructionsSection.innerText="";
     timerDisplay.innerText+= ` ${time}`;
     scoreDisplay.innerText+= ` ${score}`
     setInterval(countDownTimer,1000);
+    pickWord(words);
 
 }
-
 /**A function that checks whether the input text matches the word displayed.
  * if the word doesn't match : show red colour in input and word screen.
  * if the word matches: show green colour in input and word screen.
