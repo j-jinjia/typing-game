@@ -2,13 +2,13 @@
 
 var _words = require("./words.js");
 
-var time = 4;
+var time = 10;
 var score = 0;
 var gameActivity; //DOM elements
 
 var paragraphMode = document.querySelector(".buttons__paragraph");
 var randomWordsMode = document.querySelector(".buttons__random");
-var inputBar = document.querySelector(".inputBar");
+var inputBar = document.querySelector("#input");
 var introSection = document.querySelector(".introdcution");
 var instructionsSection = document.querySelector(".instructions");
 var wordDisplay = document.querySelector(".gameSettings__screenDisplay");
@@ -42,6 +42,8 @@ var wordMatch = function wordMatch() {
     messageDisplay.innerText = '';
     return false;
   }
+
+  ;
 };
 
 var gameStatus = function gameStatus() {
@@ -55,8 +57,7 @@ function startGame() {
   if (wordMatch()) {
     isPlaying = true;
     pickWord(_words.words);
-    inputBar.value = '';
-    score++;
+    inputBar.value = ''; //score++;
   }
 }
 

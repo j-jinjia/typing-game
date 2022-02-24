@@ -1,13 +1,13 @@
 import {words} from "./words.js"
 
 //global variables
-let time = 4;
+let time = 10;
 let score = 0;
 let gameActivity;
 //DOM elements
 const paragraphMode = document.querySelector(".buttons__paragraph");
 const randomWordsMode = document.querySelector(".buttons__random");
-const inputBar = document.querySelector(".inputBar");
+const inputBar = document.querySelector("#input");
 const introSection = document.querySelector(".introdcution");
 const instructionsSection = document.querySelector(".instructions");
 const wordDisplay = document.querySelector(".gameSettings__screenDisplay");
@@ -37,7 +37,7 @@ const wordMatch = () => {
       } else {
         messageDisplay.innerText = '';
         return false;
-      }
+      };
     
 };
 const gameStatus = () =>{
@@ -51,7 +51,7 @@ function startGame() {
       isPlaying = true;
       pickWord(words);
       inputBar.value = '';
-      score++;
+      //score++;
     }
 }
 const onButtonParagraphClick = (event) => {
@@ -66,10 +66,7 @@ const onButtonRandomClick = (event) => {
     pickWord(words);
     setInterval(countDownTimer,1000);
     setInterval(gameStatus,50);
-    inputBar.addEventListener("input", startGame)
-
-
-
+    inputBar.addEventListener("input", startGame);
 }
 /**A function that checks whether the input text matches the word displayed.
  * if the word doesn't match : show red colour in input and word screen.
