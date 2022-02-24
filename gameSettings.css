@@ -1,0 +1,9 @@
+.gameSettings .gameSettings__screenDisplay {
+  font-size: 3rem;
+}
+.gameSettings .gameSettings__inputBar {
+  font-size: 3rem;
+}
+.gameSettings .scoreBoard {
+  font-size: 2rem;
+}

@@ -1,9 +1,3 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -31,28 +25,4 @@
 .container .buttons .buttons__random {
   padding: 1rem;
   margin: 1rem;
-}
-
-.gameSettings .gameSettings__screenDisplay {
-  font-size: 3rem;
-}
-.gameSettings .gameSettings__inputBar {
-  font-size: 3rem;
-}
-.gameSettings .scoreBoard {
-  font-size: 2rem;
-}
-
-.endScreen .endScreen__header {
-  font-size: 4rem;
-}
-.endScreen .endScreen__message {
-  font-size: 3rem;
-}
-
-.instructions .instructions__header {
-  font-size: 2rem;
-}
-.instructions .instructions__body {
-  font-size: 1.5rem;
 }

@@ -1,0 +1,33 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: grey;
+    height:100vh;
+    .introdcution{
+        .introduction__header{
+            font-size: 3rem;
+        }
+        .introduction__body{
+            font-size: 2rem;
+
+        }
+
+    }
+    .buttons{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        .buttons__paragraph{
+            padding:1rem;
+            margin:1rem;
+        }
+        .buttons__random{
+            padding:1rem;
+            margin:1rem;
+        }
+    }
+}
