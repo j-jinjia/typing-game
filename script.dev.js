@@ -2,7 +2,7 @@
 
 var _words = require("./words.js");
 
-var time = 10;
+var time = 11;
 var score = 0;
 var gameActivity; //DOM elements
 
@@ -15,28 +15,54 @@ var wordDisplay = document.querySelector(".gameSettings__screenDisplay");
 var timerDisplay = document.querySelector(".scoreBoard__timer");
 var scoreDisplay = document.querySelector(".scoreBoard__score");
 var messageDisplay = document.querySelector(".scoreBoard__message");
+var congratulationsDisplay = document.querySelector(".endScreen__header");
+var endMessageDisplay = document.querySelector(".endScreen__message");
 /**A function that clears the introduction header, the instructions and the buttons when either button is clicked and displays the screen and input bigger. Also add a countdown before the game starts, score and timer. */
-//** A function to display a random word from the array of words. */
 
 var countDownTimer = function countDownTimer() {
   if (time > 0) {
     time--;
   } else if (time == 0) {
     gameActivity = false;
+    return;
   }
 
   timerDisplay.innerText = "Timer: ".concat(time);
-};
+}; //** A function to display a random word from the array of words. */
+
 
 var pickWord = function pickWord(word) {
   var randomWord = Math.floor(Math.random() * word.length);
   wordDisplay.innerText = word[randomWord];
 };
+/**A function that checks whether the input text matches the word displayed.
+ * if the word doesn't match : show red colour in input and word screen.
+ * if the word matches: show green colour in input and word screen.
+ */
+
+/**A function that starts after enter button is clicked
+ * if the word is correct, display the next word
+ * if the word is incorrect, keep the same word. 
+ */
+
+
+var gameOver = function gameOver() {
+  congratulationsDisplay.innerText = "Congratulations!!!";
+  endMessageDisplay.innerText = "You have typed ".concat(score, " words! Keep it up!");
+  wordDisplay.innerText = "";
+  timerDisplay.innerText = "";
+  scoreDisplay.innerText = "";
+  messageDisplay.innerText = "";
+  return;
+};
 
 var wordMatch = function wordMatch() {
-  // Check if the typed word is matching the displayed word. Turn the typed words into lowercase.
-  if (inputBar.value === wordDisplay.innerText) {
+  // Check if the typed word is matching the displayed word. Turn the typed words into uppercase.
+  if (inputBar.value.toUpperCase() === wordDisplay.innerText) {
     messageDisplay.innerText = 'Correct!!!';
+    pickWord(_words.words);
+    inputBar.value = "";
+    scoreDisplay.innerText = "Score: ".concat(score++);
     return true;
   } else {
     messageDisplay.innerText = '';
@@ -49,13 +75,13 @@ var wordMatch = function wordMatch() {
 var gameStatus = function gameStatus() {
   if (!gameActivity && time === 0) {
     messageDisplay.innerText = "Time is up!";
-    score = -1;
+    gameOver();
   }
 };
 
 function startGame() {
   if (wordMatch()) {
-    isPlaying = true;
+    gameActivity = true;
     pickWord(_words.words);
     inputBar.value = ''; //score++;
   }
@@ -75,21 +101,6 @@ var onButtonRandomClick = function onButtonRandomClick(event) {
   setInterval(gameStatus, 50);
   inputBar.addEventListener("input", startGame);
 };
-/**A function that checks whether the input text matches the word displayed.
- * if the word doesn't match : show red colour in input and word screen.
- * if the word matches: show green colour in input and word screen.
- */
-
-/**A function that starts after enter button is clicked
- * if the word is correct, display the next word
- * if the word is incorrect, keep the same word. 
- */
-
-/**A function that sets a timer. When it reaches 0, end the game
- * display ending screen with a sentence.
- * "Game Over: You have typed X words in x minutes. Well done!
- */
-
 /**A reset button to restart the game. */
 //Event listeners
 
