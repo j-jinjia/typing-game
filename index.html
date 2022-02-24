@@ -18,19 +18,23 @@
             </div>
         </section>
 
-        <section class="gameSettings">
-            <div class="gameSettings__screenDisplay">Word Display</div>
-            <input class="gameSettings__inputBar" type="text" placeholder="Type your words here!" id="input"></input>
+        <section class="gameSettings" > 
+            <div class="gameSettings__screenDisplay"></div>
+            <input class="gameSettings__inputBar" type="text" placeholder="Type your words here!" id="input" ></input>
             <div class="scoreBoard">
-                <div class ="scoreBoard__timer">Timer:</div>
-                <div class ="scoreBoard__score">Score:</div>
-                <div class="scoreBoard__message">Message</div>
+                <div class ="scoreBoard__timer"></div>
+                <div class ="scoreBoard__score"></div>
+                <div class="scoreBoard__message"></div>
             </div>
         </section>
 
         <section class ="instructions">
-            <h4>Instructions</h4>
-            <p>Use your keyboard and type all the words shown as fast as possible!</p>
+            <h4 class ="instructions__header">Instructions</h4>
+            <p class="instructions__body">Use your keyboard and type all the words shown as fast as possible! Type the words either all in lowercase or uppercase</p>
+        </section>
+        <section class="endScreen">
+            <h4 class="endScreen__header"></h4>
+            <p class="endScreen__message"></p>
         </section>
     </main>
     <script src="script.js" type="module"></script>
