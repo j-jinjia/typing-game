@@ -1,0 +1,8 @@
+random word game
+//1.- Make input bar bigger and other messages on screen bigger too [done]
+2. Don't allow more typings after the timer reaches 0 [pending]
+//3. Show an ending screen with congratulations your score was x ! [done]
+4. add special effects with npm confetti or similar [pending]
+5.- Bug with score. When 4 words are typed, the score displays 5. 
+
+
