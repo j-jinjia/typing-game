@@ -2,7 +2,7 @@
 
 var _words = require("./words.js");
 
-var time = 11;
+var time = 100;
 var score = 0;
 var gameActivity; //DOM elements
 
@@ -16,17 +16,24 @@ var timerDisplay = document.querySelector(".scoreBoard__timer");
 var scoreDisplay = document.querySelector(".scoreBoard__score");
 var messageDisplay = document.querySelector(".scoreBoard__message");
 var congratulationsDisplay = document.querySelector(".endScreen__header");
-var endMessageDisplay = document.querySelector(".endScreen__message");
-/**A function that clears the introduction header, the instructions and the buttons when either button is clicked and displays the screen and input bigger. Also add a countdown before the game starts, score and timer. */
+var endMessageDisplay = document.querySelector(".endScreen__message"); //PARAGRAPH GAME
+
+var onButtonParagraphClick = function onButtonParagraphClick(event) {
+  introSection.innerText = "";
+  instructionsSection.innerText = "";
+}; //RANDOM WORD GAME
+
+/** A function that creates and displays a timer.*/
+
 
 var countDownTimer = function countDownTimer() {
   if (time > 0) {
     time--;
   } else if (time == 0) {
     gameActivity = false;
-    return;
   }
 
+  ;
   timerDisplay.innerText = "Timer: ".concat(time);
 }; //** A function to display a random word from the array of words. */
 
@@ -35,15 +42,12 @@ var pickWord = function pickWord(word) {
   var randomWord = Math.floor(Math.random() * word.length);
   wordDisplay.innerText = word[randomWord];
 };
-/**A function that checks whether the input text matches the word displayed.
- * if the word doesn't match : show red colour in input and word screen.
- * if the word matches: show green colour in input and word screen.
- */
 
-/**A function that starts after enter button is clicked
- * if the word is correct, display the next word
- * if the word is incorrect, keep the same word. 
- */
+var pickHappyMessage = function pickHappyMessage(word) {
+  var randomWord = Math.floor(Math.random() * word.length);
+  messageDisplay.innerText = word[randomWord];
+};
+/** GameOver Screen. A function that changes the HTML tags for game ending screen. Displays the words typed and a message */
 
 
 var gameOver = function gameOver() {
@@ -55,10 +59,12 @@ var gameOver = function gameOver() {
   messageDisplay.innerText = "";
   inputBar.style.display = "none";
 };
+/** A function that checks whether the word typed matches word displayed. If so, add 1 to the score and display a new word from the array*/
+
 
 var wordMatch = function wordMatch() {
   if (inputBar.value.toUpperCase() === wordDisplay.innerText) {
-    messageDisplay.innerText = 'Correct!!!';
+    pickHappyMessage(_words.HappyMessage);
     pickWord(_words.words);
     inputBar.value = "";
     score++;
@@ -69,13 +75,18 @@ var wordMatch = function wordMatch() {
 
   ;
 };
+/** Checks if if the timer is 0 and wether the game is active. And calls game over function */
+
 
 var gameStatus = function gameStatus() {
   if (!gameActivity && time === 0) {
-    messageDisplay.innerText = "Time is up!";
     gameOver();
   }
+
+  ;
 };
+/**Start the game function. Display word from array. */
+
 
 var startGame = function startGame() {
   if (wordMatch()) {
@@ -83,27 +94,25 @@ var startGame = function startGame() {
     pickWord(_words.words);
     inputBar.value = '';
   }
-};
 
-var onButtonParagraphClick = function onButtonParagraphClick(event) {
-  introSection.innerText = "";
-  instructionsSection.innerText = "";
-}; //RANDOM WORD GAME
+  ;
+};
+/** Start all the functions when Random Game mode is triggered.Timer,display word, focus on input bar, and event listener on input for this game mode. */
 
 
 var onButtonRandomClick = function onButtonRandomClick(event) {
   introSection.innerText = "";
   instructionsSection.innerText = "";
   inputBar.style.display = "block";
+  timerDisplay.innerText = "Timer: ";
+  scoreDisplay.innerText = "Score: ";
   inputBar.focus();
   pickWord(_words.words);
   setInterval(countDownTimer, 1000);
   setInterval(gameStatus, 50);
-  inputBar.addEventListener("input", startGame);
-};
-/**A reset button to restart the game. */
-//Event listeners
+}; //Event listeners
 
 
 paragraphMode.addEventListener("click", onButtonParagraphClick);
 randomWordsMode.addEventListener("click", onButtonRandomClick);
+inputBar.addEventListener("input", startGame);
