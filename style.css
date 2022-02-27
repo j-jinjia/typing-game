@@ -11,6 +11,7 @@
   justify-content: center;
   background-color: grey;
   height: 100vh;
+  width: auto;
 }
 .container .introdcution .introduction__header {
   font-size: 3rem;
@@ -38,6 +39,7 @@
 }
 .gameSettings .gameSettings__inputBar {
   font-size: 3rem;
+  display: none;
 }
 .gameSettings .scoreBoard {
   font-size: 2rem;

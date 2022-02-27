@@ -3,6 +3,7 @@
 }
 .gameSettings .gameSettings__inputBar {
   font-size: 3rem;
+  display: none;
 }
 .gameSettings .scoreBoard {
   font-size: 2rem;
