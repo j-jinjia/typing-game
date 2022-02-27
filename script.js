@@ -49,20 +49,18 @@ const gameOver= () =>{
     timerDisplay.innerText="";
     scoreDisplay.innerText="";
     messageDisplay.innerText="";
-    return
+    inputBar.style.display="none"
 }
 
 const wordMatch = () => {
-    // Check if the typed word is matching the displayed word. Turn the typed words into uppercase.
     if (inputBar.value.toUpperCase() === wordDisplay.innerText) {
         messageDisplay.innerText = 'Correct!!!';
         pickWord(words);
         inputBar.value="";
-        scoreDisplay.innerText = `Score: ${score++}`;
-        return true;
+        score++
+        scoreDisplay.innerText = `Score: ${score}`;
       } else {
         messageDisplay.innerText = '';
-        return false;
       };
     
 };
@@ -72,12 +70,11 @@ const gameStatus = () =>{
         gameOver()
     }
 }
-function startGame() {
+const startGame = () => {
     if (wordMatch()) {
       gameActivity = true;
       pickWord(words);
       inputBar.value = '';
-      //score++;
     }
 }
 const onButtonParagraphClick = (event) => {
@@ -89,10 +86,13 @@ const onButtonParagraphClick = (event) => {
 const onButtonRandomClick = (event) => {
     introSection.innerText="";
     instructionsSection.innerText="";
+    inputBar.style.display="block"
+    inputBar.focus()
     pickWord(words);
     setInterval(countDownTimer,1000);
     setInterval(gameStatus,50);
     inputBar.addEventListener("input", startGame);
+
 }
 
 

@@ -53,20 +53,18 @@ var gameOver = function gameOver() {
   timerDisplay.innerText = "";
   scoreDisplay.innerText = "";
   messageDisplay.innerText = "";
-  return;
+  inputBar.style.display = "none";
 };
 
 var wordMatch = function wordMatch() {
-  // Check if the typed word is matching the displayed word. Turn the typed words into uppercase.
   if (inputBar.value.toUpperCase() === wordDisplay.innerText) {
     messageDisplay.innerText = 'Correct!!!';
     pickWord(_words.words);
     inputBar.value = "";
-    scoreDisplay.innerText = "Score: ".concat(score++);
-    return true;
+    score++;
+    scoreDisplay.innerText = "Score: ".concat(score);
   } else {
     messageDisplay.innerText = '';
-    return false;
   }
 
   ;
@@ -79,13 +77,13 @@ var gameStatus = function gameStatus() {
   }
 };
 
-function startGame() {
+var startGame = function startGame() {
   if (wordMatch()) {
     gameActivity = true;
     pickWord(_words.words);
-    inputBar.value = ''; //score++;
+    inputBar.value = '';
   }
-}
+};
 
 var onButtonParagraphClick = function onButtonParagraphClick(event) {
   introSection.innerText = "";
@@ -96,6 +94,8 @@ var onButtonParagraphClick = function onButtonParagraphClick(event) {
 var onButtonRandomClick = function onButtonRandomClick(event) {
   introSection.innerText = "";
   instructionsSection.innerText = "";
+  inputBar.style.display = "block";
+  inputBar.focus();
   pickWord(_words.words);
   setInterval(countDownTimer, 1000);
   setInterval(gameStatus, 50);
