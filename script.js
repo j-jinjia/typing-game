@@ -1,9 +1,11 @@
 import {words, HappyMessage} from "./words.js"
 
 //global variables
-let time = 100;
+let time = 60;
 let score = 0;
 let gameActivity;
+
+
 //DOM elements
 const paragraphMode = document.querySelector(".buttons__paragraph");
 const randomWordsMode = document.querySelector(".buttons__random");
@@ -16,7 +18,6 @@ const scoreDisplay = document.querySelector(".scoreBoard__score");
 const messageDisplay = document.querySelector(".scoreBoard__message");
 const congratulationsDisplay = document.querySelector(".endScreen__header");
 const endMessageDisplay = document.querySelector(".endScreen__message");
-
 
 //PARAGRAPH GAME
 const onButtonParagraphClick = (event) => {
@@ -71,8 +72,9 @@ const wordMatch = () => {
 /** Checks if if the timer is 0 and wether the game is active. And calls game over function */
 const gameStatus = () =>{
     if (!gameActivity && time === 0){
-        gameOver();
+        gameOver(); 
     };
+    clearInterval(setInterval(countDownTimer,1000));
 };
 /**Start the game function. Display word from array. */
 const startGame = () => {
@@ -87,8 +89,8 @@ const onButtonRandomClick = (event) => {
     introSection.innerText="";
     instructionsSection.innerText="";
     inputBar.style.display="block";
-    timerDisplay.innerText="Timer: ";
-    scoreDisplay.innerText="Score: "
+    timerDisplay.innerText="Timer: 60 ";
+    scoreDisplay.innerText="Score: 0"
     inputBar.focus();
     pickWord(words);
     setInterval(countDownTimer,1000);

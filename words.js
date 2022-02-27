@@ -241,4 +241,4 @@ export const words = ['ACCOUNT','ACCURATE','ACRES','ACROSS','ACT','ACTION','ACTI
   'WRAPPED','WRITE','WRITER','WRITING','WRITTEN','WRONG','WROTE','YARD',
   'YEAR','YELLOW','YES','YESTERDAY','YET','YOU','YOUNG','YOUNGER',
   'YOUR','YOURSELF','YOUTH','ZERO','ZOO'];
-  export const HappyMessage = ["Nice one!", "Keep it up!", "Nice!", "Impressive!", "Amazing!", "Very Good!", "Wow!", "Very Good!", "Seems easy for you!"];
+  export const HappyMessage = ["Nice one!", "Keep it up!", "Nice!", "Impressive!", "Amazing!", "Very Good!", "Wow!", "Very Good!", "Seems easy for you!", "Slow it down, buddy!"];
