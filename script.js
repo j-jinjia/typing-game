@@ -17,7 +17,7 @@ const scoreDisplay = document.querySelector(".scoreBoard__score");
 const messageDisplay = document.querySelector(".message");
 const congratulationsDisplay = document.querySelector(".endScreen__header");
 const endMessageDisplay = document.querySelector(".endScreen__message");
-
+const restartButton= document.querySelector(".endScreen__restartButton")
 //RANDOM WORD GAME
 
 /** A function that creates and displays a timer.*/
@@ -52,6 +52,7 @@ const gameOver= () =>{
         scoreDisplay.style.display="none";
         messageDisplay.style.display="none";
         inputBar.style.display="none";
+        restartButton.style.display="block";
     };
     if (score > 0){
         congratulationsDisplay.innerText = "Congratulations!!!"
@@ -61,6 +62,7 @@ const gameOver= () =>{
         scoreDisplay.style.display="none";
         messageDisplay.style.display="none";
         inputBar.style.display="none";
+        restartButton.style.display="block";
     };
 };
 /** A function that checks whether the word typed matches word displayed. If so, add 1 to the score and display a new word from the array*/
@@ -89,6 +91,12 @@ const startGame = () => {
       inputBar.value = '';
     };
 };
+//Restart Button. 
+const onClickRestartButton = ()=>{
+    window.location.reload();
+    return false;
+};
+
 /** Start all the functions when Random Game mode is triggered.Timer,display word, focus on input bar, clkearing messages and diplaying scores. */
 const onButtonRandomClick = () => {
     introSection.innerText="";
@@ -106,4 +114,5 @@ const onButtonRandomClick = () => {
 //Event listeners
 randomWordsMode.addEventListener("click", onButtonRandomClick);
 inputBar.addEventListener("input", startGame);
+restartButton.addEventListener("click", onClickRestartButton);
 
