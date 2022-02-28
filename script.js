@@ -1,7 +1,7 @@
 import {words, CheeringMessage} from "./words.js"
 
 //global variables
-let time = 10;
+let time = 5;
 let score = 0;
 let gameActivity;
 
@@ -41,28 +41,27 @@ const pickCheeringMessage = (message) => {
 };
 
 /** GameOver Screen. A function that changes the HTML tags for game ending screen. Displays the words typed and a message */
-
+const gameOverScreen = () => {
+    wordDisplay.style.display="none";
+    timerDisplay.style.display="none";
+    scoreDisplay.style.display="none";
+    messageDisplay.style.display="none";
+    inputBar.style.display="none";
+    restartButton.style.display="block";
+};
 const gameOver= () =>{
     if (score == null) return
     if (score == 0){
         congratulationsDisplay.innerText = "Em..."
         endMessageDisplay.innerText = `You didn't type any word... It's ok...`
-        wordDisplay.style.display="none";
-        timerDisplay.style.display="none";
-        scoreDisplay.style.display="none";
-        messageDisplay.style.display="none";
-        inputBar.style.display="none";
-        restartButton.style.display="block";
+        gameOverScreen() 
+
     };
     if (score > 0){
         congratulationsDisplay.innerText = "Congratulations!!!"
         endMessageDisplay.innerText = `You have typed ${score} words! Keep it up!`
-        wordDisplay.style.display="none";
-        timerDisplay.style.display="none";
-        scoreDisplay.style.display="none";
-        messageDisplay.style.display="none";
-        inputBar.style.display="none";
-        restartButton.style.display="block";
+        gameOverScreen() 
+
     };
 };
 /** A function that checks whether the word typed matches word displayed. If so, add 1 to the score and display a new word from the array*/

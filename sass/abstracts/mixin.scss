@@ -2,4 +2,10 @@
     margin:$margin-size;
     padding:$padding-size;
 };
+@mixin box ($display, $direction, $justify, $align){
+    display:$display;
+    flex-direction: $direction;
+    justify-content:$justify;
+    align-items: $align;
+}
 //not importing correctly...

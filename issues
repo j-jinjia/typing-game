@@ -5,6 +5,8 @@ random word game
 4. add special effects with npm confetti or similar [pending]
 5.- Bug with score. When 4 words are typed, the score displays 5. [done]
 
+paragraph game:
+1.- Not detecting each letter correctly.
 
-
-
+Add-ons . npm typewritter,
+npm confetti or alike.
