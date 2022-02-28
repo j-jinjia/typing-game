@@ -1,0 +1,11 @@
+.endScreen{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .endScreen__header{
+        font-size: 2rem;
+    }
+    .endScreen__message {
+        font-size: 1.5rem;
+    }
+}

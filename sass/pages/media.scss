@@ -1,0 +1,108 @@
+@media screen and (min-width:768px){
+    .container{
+        .introdcution{
+            .screenIntro{
+                .screenIntro__header{
+                    font-size: 3rem;
+                };
+                .screenIntro__body{
+                    font-size: 2rem;
+        
+                };
+            };
+            .buttons{
+                .buttons__random{
+                    padding:2rem;
+                    margin:2rem;
+                    font-size: 1.5rem;
+                };
+            };
+        };
+    };
+    .gameSettings{
+        .gameSettings__screenDisplay{
+            font-size:3rem;
+        };
+        .gameSettings__inputBar{
+            font-size:2rem;
+        };
+        .scoreBoard{
+            font-size: 2rem;
+        };
+        .message{
+            font-size: 2rem;
+        };
+    };
+    .endScreen{
+        .endScreen__header{
+            font-size: 3rem;
+        };
+        .endScreen__message {
+            font-size: 2rem;
+        };
+    };
+    .instructions{
+        width:75%;
+        .instructions__header{
+            font-size: 2rem;
+        };
+        .instructions__body{
+            font-size: 1.5rem;
+        };
+    };
+    
+};
+@media screen and (min-width:1024px){
+    .container{
+        .introdcution{
+            .screenIntro{
+                .screenIntro__header{
+                    font-size: 3rem;
+                };
+                .screenIntro__body{
+                    font-size: 2rem;
+        
+                };
+            };
+            .buttons{
+                .buttons__random{
+                    padding:2rem;
+                    margin:2rem;
+                    font-size: 1.5rem;
+                };
+            };
+        };
+    };
+    .gameSettings{
+        .gameSettings__screenDisplay{
+            font-size:3rem;
+        };
+        .gameSettings__inputBar{
+            font-size:2rem;
+        };
+        .scoreBoard{
+            font-size: 2rem;
+        };
+        .message{
+            font-size: 2rem;
+        };
+    };
+    .endScreen{
+        .endScreen__header{
+            font-size: 4rem;
+        };
+        .endScreen__message {
+            font-size: 3rem;
+        };
+    };
+    .instructions{
+        width:75%;
+        .instructions__header{
+            font-size: 2rem;
+        };
+        .instructions__body{
+            font-size: 1.5rem;
+        };
+    };
+    
+};

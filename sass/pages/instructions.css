@@ -1,0 +1,14 @@
+.instructions {
+  padding: 1rem;
+  width: 80%;
+}
+.instructions .instructions__header {
+  font-size: 1.5rem;
+}
+.instructions .instructions__body {
+  font-size: 1rem;
+  padding: 1rem;
+}
+.instructions .instructions__body li {
+  list-style: inside;
+}

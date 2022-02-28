@@ -5,16 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <title>Typeracer</title>
 </head>
 <body>
     <main class="container">
         <section class="introdcution">
-            <h1 class="introduction__header">TYPING GAME</h1>
-            <h3 class ="introduction__body">Welcome to my typing game. Please choose your game mode!</h3>
+            <div class="screenIntro">
+                <h1 class="screenIntro__header">TYPING GAME</h1>
+                <h3 class ="screenIntro__body">Welcome to my typing game. Press Start Game when you are ready!</h3>
+            </div>
             <div class ="buttons">
-                <button class="buttons__paragraph" >PRARAGRAH</button>
-                <button class="buttons__random">RANDOM WORDS</button>
+                <button class="buttons__random">START GAME</button>
             </div>
         </section>
 
@@ -24,13 +28,18 @@
             <div class="scoreBoard">
                 <div class ="scoreBoard__timer"></div>
                 <div class ="scoreBoard__score"></div>
-                <div class="scoreBoard__message"></div>
             </div>
+            <div class="message"></div>
         </section>
 
         <section class ="instructions">
-            <h4 class ="instructions__header">Instructions</h4>
-            <p class="instructions__body">Use your keyboard and type all the words shown as fast as possible! Type the words either all in lowercase or uppercase</p>
+            <h4 class ="instructions__header">INSTRUCTIONS</h4>
+            <ul class="instructions__body">
+                <li>Use your keyboard and type all the words shown as fast as possible!</li>
+                <li>You have 60 seconds</li>
+                <li>Type the words either all in lowercase or UPPERCASE</li>
+            </ul>
+
         </section>
         <section class="endScreen">
             <h4 class="endScreen__header"></h4>

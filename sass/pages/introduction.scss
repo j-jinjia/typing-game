@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #0A0908;
+    height:100vh;
+    width: auto;
+    color:#BCC3CB;
+    .introdcution{
+        .screenIntro{
+            border: 2px solid #8a6b46;
+            padding:2rem;
+            margin:2rem;
+            .screenIntro__header{
+                font-size: 2rem;
+                margin:1rem;
+            };
+            .screenIntro__body{
+                font-size: 1rem;
+    
+            };
+        };
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            .buttons__random{
+                background-color: #c6ac8f;
+                padding:1rem;
+                margin:1rem;
+            };
+        };
+    };
+};

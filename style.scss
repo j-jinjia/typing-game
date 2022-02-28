@@ -1,5 +1,8 @@
-@import "universal.scss";
-@import "introduction.scss";
-@import "gameSettings.scss";
-@import "endScreen.scss";
-@import "instructions.scss";
+@import "./sass/base/reset.scss";
+@import "./sass/pages/introduction.scss";
+@import "./sass/pages/gameSettings.scss";
+@import "./sass/pages/endScreen.scss";
+@import "./sass/pages/instructions.scss";
+@import "./sass/pages/media.scss";
+
+//issues with importing variables and mixins.

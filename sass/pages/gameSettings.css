@@ -1,0 +1,24 @@
+.gameSettings .gameSettings__screenDisplay {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+.gameSettings #input {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  display: none;
+}
+.gameSettings .scoreBoard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+.gameSettings .message {
+  display: flex;
+  justify-content: center;
+}
