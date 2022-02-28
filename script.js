@@ -1,7 +1,7 @@
 import {words, CheeringMessage} from "./words.js"
 
 //global variables
-let time = 5;
+let time = 60;
 let score = 0;
 let gameActivity;
 
