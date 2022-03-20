@@ -17,7 +17,7 @@ It has a responsive design for :
 - Tablets and small laptops up to 1024px
 - PC monitors or larger devices from 1024px
 
-# FUNCIONALITY
+# FUNCTIONALITY
 
 The typing game can be played as follows:
 
